@@ -25,8 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import { useStockStore } from '@/stores/StockStore';
-import { storeToRefs } from 'pinia';
+import { useStockStore } from '@/stores/StockStore'
+import { storeToRefs } from 'pinia'
 
 const stockStore = useStockStore()
 const { selected } = storeToRefs(stockStore)

@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useStockStore } from '@/stores/StockStore';
-import ProductCard from '@/components/ProductCard.vue';
+import { computed } from 'vue'
+import { useStockStore } from '@/stores/StockStore'
+import ProductCard from '@/components/ProductCard.vue'
 import BuyButton from '@/components/BuyButton.vue'
 
 const stockStore = useStockStore()

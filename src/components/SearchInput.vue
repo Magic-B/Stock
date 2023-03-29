@@ -13,7 +13,7 @@ import debounce from 'lodash.debounce'
 defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
 
-const updateValue = debounce ((e: Event) => {
+const updateValue = debounce((e: Event) => {
   emit('update:modelValue', (e.target as HTMLInputElement).value)
 }, 500)
 </script>

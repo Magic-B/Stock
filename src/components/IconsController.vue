@@ -1,5 +1,5 @@
 <template>
-	<component :is="`${name}-icon`"/>
+	<component :is="`${name}-icon`" />
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
 		}
 	},
 	components: {
-    DealsIcon, FavoritesIcon, StockIcon, SearchIcon, GeoIcon
-  }
+		DealsIcon, FavoritesIcon, StockIcon, SearchIcon, GeoIcon
+	}
 }
 </script>

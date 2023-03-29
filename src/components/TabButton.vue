@@ -1,6 +1,6 @@
 <template>
   <div class="tab">
-    <IconsController :name="icon"/>
+    <IconsController :name="icon" />
     <div class="tab_label">{{ label }}</div>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import IconsController from '@/components/IconsController.vue'
 
-const props = defineProps({
+defineProps({
   label: {
     type: String,
     required: true

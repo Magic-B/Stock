@@ -1,6 +1,6 @@
 <template>
-  <button class="action_btn" :class="active ? 'action_btn_active' : ''">
-    {{ active ? altLabel : label }}
+  <button class="action_btn">
+    {{ label }}
   </button>
 </template>
 
@@ -8,14 +8,6 @@
 defineProps({
   label: {
     type: String,
-    required: true
-  },
-  altLabel: {
-    type: String,
-    required: true
-  },
-  active: {
-    type: Boolean,
     required: true
   }
 })
@@ -36,9 +28,10 @@ defineProps({
   height: 50px;
   background: $bg;
   border-radius: 10px;
-}
+  transition: all .1s;
 
-.action_btn_active {
-  color: $selection;
+  &:active {
+    background: $selection;
+  }
 }
 </style>

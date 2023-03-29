@@ -5,28 +5,28 @@
       :to="{ name: 'favorites' }"
       active-class="active"
     >
-      <TabBtn label="Избранное" icon="favorites" />
+      <TabButton label="Избранное" icon="favorites" />
     </RouterLink>
     <RouterLink
       class="router_link"
       :to="{ name: 'stock' }"
       active-class="active"
     >
-      <TabBtn label="Склад" icon="stock" />
+      <TabButton label="Склад" icon="stock" />
     </RouterLink>
     <RouterLink
       class="router_link"
       :to="{ name: 'deals' }"
       active-class="active"
     >
-      <TabBtn label="Сделки" icon="deals" />
+      <TabButton label="Сделки" icon="deals" />
     </RouterLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import TabBtn from './TabBtn.vue';
+import { RouterLink } from 'vue-router'
+import TabButton from '@/components/TabButton.vue'
 </script>
 
 <style lang="scss" scoped>

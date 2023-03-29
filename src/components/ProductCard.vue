@@ -43,20 +43,20 @@
       </div>
       <div class="product_card_btns">
         <slot></slot>
-        <FavoritesBtn :active="isProductInclude(data, 'favoritesProducts')" @click="addToFavorites(data)" />
+        <FavoritesButton :active="isProductInclude(data, 'favoritesProducts')" @click="addToFavorites(data)" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 import { useStockStore } from '@/stores/StockStore'
-import type { PropType } from 'vue';
-import type { Product } from '@/types/interfaces/product.interfacet.interface'
+import type { PropType } from 'vue'
+import type { Product } from '@/types/product.interface'
 import { isProductInclude } from '@/composables/useProductInclude'
 import IconsController from '@/components/IconsController.vue'
-import FavoritesBtn from '@/components/FavoritesBtn.vue';
+import FavoritesButton from '@/components/FavoritesButton.vue'
 
 const props = defineProps({
   data: {
@@ -79,7 +79,7 @@ const addToFavorites = (product: Product) => {
 
 const totalPrice = computed(() => props.data.price * props.data.quantity)
 
-const priceCorrection = (price: number) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+const priceCorrection = (price: number) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 
 const prepareDescription = (value: string) => {
   if (value?.length > 250) {
@@ -113,16 +113,18 @@ const prepareDescription = (value: string) => {
       &_type {
         color: $selection;
       }
+
       &_title {
         margin-top: 15px;
         font-weight: 500;
         font-size: 15px;
       }
+
       &_geo {
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         width: 240px;
         height: 23px;
 
@@ -132,13 +134,16 @@ const prepareDescription = (value: string) => {
         background: $bg;
         border-radius: 5px;
       }
+
       &_seller {
         margin-top: 12px;
+
         span {
           margin-right: 5px;
           color: $selection;
         }
       }
+
       &_category {
         display: flex;
         flex-direction: column;
@@ -157,6 +162,7 @@ const prepareDescription = (value: string) => {
           color: $selection;
         }
       }
+
       &_description {
         margin-top: 12px;
       }
@@ -176,23 +182,28 @@ const prepareDescription = (value: string) => {
         font-weight: 500;
         font-size: 20px;
       }
+
       &_quantity {
         display: flex;
         justify-content: space-between;
         margin-top: 14px;
+
         span {
           color: $selection;
         }
       }
+
       &_price {
         display: flex;
         justify-content: space-between;
         margin-top: 11px;
+
         span {
           color: $selection;
         }
       }
     }
+
     .product_card_btns {
       position: absolute;
       display: flex;

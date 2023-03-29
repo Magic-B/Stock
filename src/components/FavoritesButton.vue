@@ -1,5 +1,5 @@
 <template>
-  <button class="favorites_btn" :class="active ? 'favorites_btn_active' : ''">
+  <button class="favorites_btn" :class="active ? 'active' : ''">
     <IconsController name="favorites" class="favorites_svg"/>
   </button>
 </template>
@@ -30,12 +30,12 @@ defineProps({
   border-radius: 10px;
 
   transition: all .5s;
-}
 
-.favorites_btn_active {
-  background: #2D3B87;
-  & .favorites_svg {
-  color: #fff ;
-}
+  &.active {
+    background: #2D3B87;
+    & .favorites_svg {
+      color: #fff;
+    }
+  }
 }
 </style>

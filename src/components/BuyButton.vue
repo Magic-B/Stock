@@ -1,9 +1,9 @@
 <template>
   <button
     class="buy_btn"
-    :class="isbought ? 'buy_btn_active' : ''"
+    :class="isbought ? 'active' : ''"
     @click="buyProduct"
-    >
+  >
     <template v-if="loader">
       <AppLoader color-white />
     </template>
@@ -55,11 +55,11 @@ const buyProduct = () => {
   color: #fff;
   background: #69C57F;
   border-radius: 10px;
-}
 
-.buy_btn_active {
-  background: none;
-  color: $selection;
-  border: 1px solid #E0E3EE;
+  &.active {
+    background: none;
+    color: $selection;
+    border: 1px solid #E0E3EE;
+  }
 }
 </style>

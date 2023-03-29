@@ -2,12 +2,7 @@
   <div class="product_list" v-if="productsBy.length">
     <template v-for="product in productsBy" :key="product.id">
       <ProductCard :data="product">
-        <ActionBtn
-          label="Добавить в сделки"
-          alt-label="Добавлен"
-          :active="isProductInclude(product, 'dealProducts')"
-          @click="addToDeal(product)"
-        />
+        <ActionButton label="Добавить в сделки" @click="addToDeal(product)" />
       </ProductCard>
     </template>
   </div>
@@ -15,18 +10,16 @@
 </template>
 
 <script setup lang="ts">
-import {computed } from 'vue';
+import { computed } from 'vue';
 import { useStockStore } from '@/stores/StockStore'
-import { isProductInclude } from '@/composables/useProductInclude'
 import type { Product } from '@/types/product.interface'
 import ProductCard from '@/components/ProductCard.vue'
-import ActionBtn from '@/components/ActionBtn.vue';
+import ActionButton from '@/components/ActionButton.vue'
 import AppLoader from '@/components/AppLoader.vue'
 
 const stockStore = useStockStore()
 const productsBy = computed(() => stockStore.searchBy('products'))
-
-const addToDeal = (product: Product) => stockStore.addTo(product, 'dealProducts')
+const addToDeal = (product: Product): void => stockStore.addTo(product, 'dealProducts')
 
 </script>
 
