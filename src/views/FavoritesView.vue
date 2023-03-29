@@ -11,23 +11,22 @@
       </ProductCard>
     </template>
   </div>
-  <AppLoader big-loader v-else />
+  <div class="message" v-else>
+    У вас пока нет избранных товаров
+  </div>
 </template>
 
 <script setup lang="ts">
-import {computed } from 'vue';
-import { useStockStore } from '@/stores/StockStore'
+import { computed } from 'vue';
+import { useStockStore } from '@/stores/StockStore';
 import { isProductInclude } from '@/composables/useProductInclude'
 import type { Product } from '@/types/product.interface'
-import ProductCard from '@/components/ProductCard.vue'
+import ProductCard from '@/components/ProductCard.vue';
 import ActionBtn from '@/components/ActionBtn.vue';
-import AppLoader from '@/components/AppLoader.vue'
 
 const stockStore = useStockStore()
-const productsBy = computed(() => stockStore.searchBy('products'))
-
-const addToDeal = (product: Product) => stockStore.addTo(product, 'dealProducts')
-
+const productsBy = computed(() => stockStore.searchBy('favoritesProducts'))
+const addToDeal = (product: Product): void => stockStore.addTo(product, 'dealProducts')
 </script>
 
 <style scoped>
@@ -35,5 +34,10 @@ const addToDeal = (product: Product) => stockStore.addTo(product, 'dealProducts'
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.message {
+  font-size: 22px;
+  font-weight: 500;
 }
 </style>

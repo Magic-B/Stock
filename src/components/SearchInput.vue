@@ -1,6 +1,6 @@
 <template>
   <div class="search_input">
-    <input type="text">
+    <input type="text" :value="modelValue" @input="updateValue">
     <button class="search_input_btn">
       <IconsController name="search" />
     </button>
@@ -9,6 +9,13 @@
 
 <script setup lang="ts">
 import IconsController from '@/components/IconsController.vue'
+import debounce from 'lodash.debounce'
+defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+
+const updateValue = debounce ((e: Event) => {
+  emit('update:modelValue', (e.target as HTMLInputElement).value)
+}, 500)
 </script>
 
 <style lang="scss" scoped>

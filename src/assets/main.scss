@@ -15,5 +15,15 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
-  color: #2D3B87;
+  color: $primary;
+}
+
+.router_link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }

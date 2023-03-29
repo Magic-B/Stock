@@ -8,6 +8,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: MainLayout,
+      children: [
+        { path: "/stock", alias: "/", name: "stock", component: () => import("@/views/StockView.vue") },
+        { path: "/deals", name: "deals", component: () => import("@/views/DealsView.vue") },
+        { path: "/favorites", name: "favorites", component: () => import("@/views/FavoritesView.vue") }
+      ]
     },
     // {
     //   path: "/about",

@@ -1,13 +1,35 @@
 <template>
   <div class="category_tabs">
-    <div class="category_tabs_item">Все типы</div>
-    <div class="category_tabs_item">Прямые продажи</div>
-    <div class="category_tabs_item">Аукцион</div>
+    <div
+      class="category_tabs_item"
+      :class="selected === null ? 'active' : ''"
+      @click="selected = null"
+    >
+      Все типы
+    </div>
+    <div
+      class="category_tabs_item"
+      :class="selected === 'Разовая продажа' ? 'active' : ''"
+      @click="selected = 'Разовая продажа'"
+    >
+      Прямые продажи
+    </div>
+    <div
+      class="category_tabs_item"
+      :class="selected === 'Аукцион' ? 'active' : ''"
+      @click="selected = 'Аукцион'"
+    >
+      Аукцион
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useStockStore } from '@/stores/StockStore';
+import { storeToRefs } from 'pinia';
 
+const stockStore = useStockStore()
+const { selected } = storeToRefs(stockStore)
 </script>
 
 <style lang="scss" scoped>
@@ -26,7 +48,11 @@
   &_item {
     cursor: pointer;
     font-size: 15px;
-    color: #969DC3;
+    color: $selection;
+  
+    &.active {
+      color: $primary !important;
+    }
   }
 }
 </style>

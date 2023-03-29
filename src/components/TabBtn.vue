@@ -29,11 +29,16 @@ const props = defineProps({
   gap: 4px;
 
   width: 86px;
-  height: 60px;
+  height: 50px;
   padding: 6px 0px 7px;
 
   &_label {
     font-weight: 500;
   }
+}
+
+.active_tab {
+  background: $bg;
+  border-radius: 10px;
 }
 </style>
