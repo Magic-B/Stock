@@ -20,7 +20,7 @@ import ActionButton from '@/components/ActionButton.vue'
 
 const stockStore = useStockStore()
 const productsBy = computed(() => stockStore.searchBy('favoritesProducts'))
-const addToDeal = (product: Product): void => stockStore.addTo(product, 'dealProducts')
+const addToDeal = (product: Product): void => stockStore.addTo('dealProducts', product)
 </script>
 
 <style scoped>

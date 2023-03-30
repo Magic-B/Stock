@@ -22,7 +22,7 @@
           {{ data.category }}
         </div>
         <div class="product_card_info_description">
-          {{ prepareDescription(data.description) }}
+          {{ prepareDescription(data.description, 250) }}
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="product_card_btns">
         <slot></slot>
-        <FavoritesButton :active="isProductInclude(data, 'favoritesProducts')" @click="addToFavorites(data)" />
+        <FavoritesButton :active="stockStore.isProductInclude('favoritesProducts', data)" @click="addToFavorites(data)" />
       </div>
     </div>
   </div>
@@ -54,7 +54,6 @@ import { computed } from 'vue'
 import { useStockStore } from '@/stores/StockStore'
 import type { PropType } from 'vue'
 import type { Product } from '@/types/product.interface'
-import { isProductInclude } from '@/composables/useProductInclude'
 import IconsController from '@/components/IconsController.vue'
 import FavoritesButton from '@/components/FavoritesButton.vue'
 
@@ -70,10 +69,10 @@ defineEmits(['favoriteAction'])
 const stockStore = useStockStore()
 
 const addToFavorites = (product: Product) => {
-  if (!isProductInclude(props.data, 'favoritesProducts')) {
-    stockStore.addTo(product, 'favoritesProducts')
+  if (!stockStore.isProductInclude('favoritesProducts', props.data)) {
+    stockStore.addTo('favoritesProducts', product)
   } else {
-    stockStore.removeFrom(product, 'favoritesProducts')
+    stockStore.removeFrom('favoritesProducts', product)
   }
 }
 
@@ -81,9 +80,9 @@ const totalPrice = computed(() => props.data.price * props.data.quantity)
 
 const priceCorrection = (price: number) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 
-const prepareDescription = (value: string) => {
-  if (value?.length > 250) {
-    return value.substring(0, 250) + '...'
+const prepareDescription = (value: string, upTo: number) => {
+  if (value?.length > upTo) {
+    return value.substring(0, upTo) + '...'
   }
   return value
 }
@@ -92,7 +91,7 @@ const prepareDescription = (value: string) => {
 <style lang="scss" scoped>
 .product_card {
   display: flex;
-  min-width: 1180px;
+  width: 100%;
   min-height: 300px;
   border: 1px solid #E0E3EE;
   border-radius: 20px;
@@ -207,8 +206,39 @@ const prepareDescription = (value: string) => {
     .product_card_btns {
       position: absolute;
       display: flex;
+      margin-top: 20px;
       gap: 12px;
       bottom: 20px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .product_card {
+    &_data {
+      flex-wrap: wrap;
+
+      .product_card_img {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .product_card {
+    flex-wrap: wrap;
+
+    .product_card_sell {
+      width: 100%;
+      min-height: unset;
+      border: unset;
+
+      .product_card_btns {
+        position: static;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
     }
   }
 }

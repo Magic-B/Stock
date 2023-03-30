@@ -1,7 +1,7 @@
 <template>
   <button
     class="buy_btn"
-    :class="isbought ? 'active' : ''"
+    :class="{ active: isbought }"
     @click="buyProduct"
   >
     <template v-if="loader">
@@ -31,11 +31,13 @@ const loader = ref(false)
 const isbought = ref(false)
 
 const buyProduct = () => {
-  loader.value = true
-  setTimeout(() => {
-    loader.value = false
-    isbought.value = true
-  }, 1000)
+  if (!isbought.value) {
+    loader.value = true
+    setTimeout(() => {
+      loader.value = false
+      isbought.value = true
+    }, 1000)
+  }
 }
 </script>
 

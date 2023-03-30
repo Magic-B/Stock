@@ -2,21 +2,21 @@
   <div class="category_tabs">
     <div
       class="category_tabs_item"
-      :class="selected === null ? 'active' : ''"
+      :class="{ active: !selected }"
       @click="selected = null"
     >
       Все типы
     </div>
     <div
       class="category_tabs_item"
-      :class="selected === 'Разовая продажа' ? 'active' : ''"
+      :class="{ active: selected === 'Разовая продажа' }"
       @click="selected = 'Разовая продажа'"
     >
       Прямые продажи
     </div>
     <div
       class="category_tabs_item"
-      :class="selected === 'Аукцион' ? 'active' : ''"
+      :class="{ active: selected === 'Аукцион' }"
       @click="selected = 'Аукцион'"
     >
       Аукцион

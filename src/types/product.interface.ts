@@ -7,6 +7,6 @@ export interface Product {
   city: string
   seller: string
   category: string
-  description: string,
+  description: string
   img: string
 }

@@ -28,7 +28,7 @@ const { searchInput } = storeToRefs(stockStore)
 onMounted(stockStore.fetchProducts)
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .page_tabs {
   display: flex;
   justify-content: flex-end;
@@ -40,5 +40,15 @@ onMounted(stockStore.fetchProducts)
   justify-content: space-between;
   margin-top: 77px;
   margin-bottom: 40px;
+}
+
+
+@media (max-width: 767px) {
+  .nav_menu {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 20px;
+  }
 }
 </style>

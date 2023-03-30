@@ -21,13 +21,13 @@ export const useStockStore = defineStore('stock', {
         const res = await axios.get(import.meta.env.VITE_BASE_URL)
         this.products = res.data
       } catch (error) {
-        console.log('ERROR')
+        alert(error)
       }
     },
-    addTo(product: Product, where: ProductsType): void {
+    addTo(where: ProductsType, product: Product): void {
       this[where].push(product)
     },
-    removeFrom(product: Product, where: ProductsType): void {
+    removeFrom(where: ProductsType, product: Product): void {
       this[where] = this[where].filter(
         (item: Product) => item.id !== product.id
       )
@@ -54,5 +54,6 @@ export const useStockStore = defineStore('stock', {
               .indexOf(this.searchInput.toLowerCase()) !== -1
         )
     },
+    isProductInclude: (state) => (where: ProductsType, product: Product) => !!state[where].find(item => item.id === product.id)
   },
 })

@@ -50,7 +50,6 @@ defineProps({
   position: absolute;
   width: 24px;
   height: 24px;
-  margin: 8px;
   border: 3px solid $primary;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

@@ -6,7 +6,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "allowJs": true
   },
 
   "references": [

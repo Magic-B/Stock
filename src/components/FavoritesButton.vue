@@ -1,5 +1,5 @@
 <template>
-  <button class="favorites_btn" :class="active ? 'active' : ''">
+  <button class="favorites_btn" :class="{ active: active }">
     <IconsController name="favorites" class="favorites_svg"/>
   </button>
 </template>
