@@ -7,7 +7,7 @@
     </template>
   </div>
   <AppLoader big-loader v-else />
-  <div class="message" v-if="!productsBy.length">
+  <div class="message" v-if="stockStore.products.length && !productsBy.length">
     Такого товара нет на складе
   </div>
 </template>

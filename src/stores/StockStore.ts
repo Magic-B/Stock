@@ -3,6 +3,8 @@ import { useStorage } from '@vueuse/core'
 import axios from 'axios'
 import type { Product } from '@/types/product.interface'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 type ProductsType = 'products' | 'favoritesProducts' | 'dealProducts'
 type SortProductsBy = null | 'Разовая продажа' | 'Аукцион'
 
@@ -18,7 +20,7 @@ export const useStockStore = defineStore('stock', {
   actions: {
     async fetchProducts(): Promise<void> {
       try {
-        const res = await axios.get(import.meta.env.VITE_BASE_URL)
+        const res = await axios.get(API_URL)
         this.products = res.data
       } catch (error) {
         alert(error)
