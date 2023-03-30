@@ -213,7 +213,7 @@ const prepareDescription = (value: string, upTo: number) => {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $bp-lg) {
   .product_card {
     &_data {
       flex-wrap: wrap;
@@ -225,7 +225,7 @@ const prepareDescription = (value: string, upTo: number) => {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: $bp-md) {
   .product_card {
     flex-wrap: wrap;
 

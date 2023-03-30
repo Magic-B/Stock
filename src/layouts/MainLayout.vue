@@ -43,7 +43,7 @@ onMounted(stockStore.fetchProducts)
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: $bp-md) {
   .nav_menu {
     flex-wrap: wrap-reverse;
     justify-content: center;
