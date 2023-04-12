@@ -2,7 +2,7 @@
 
 # Stock
 
-✨ Simple realization of a warehouse with goods ✨
+✨ Simple realization of a stock with goods ✨
 
 </div>
 
@@ -36,4 +36,4 @@ npm run lint
 
 
 ### Deployment
-This application can be used on Vercel - https://git-search-rho-three.vercel.app/
+This application can be used on Vercel - https://stock-phi.vercel.app/
